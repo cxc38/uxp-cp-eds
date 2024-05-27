@@ -1,0 +1,220 @@
+.content-carousel.sactionals .slides {
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.content-carousel.sactionals .slide {
+    background-color: var(--light-color);
+    grid-template-rows: minmax(1.6rem, max-content);
+    grid-auto-rows: min-content;
+    padding-bottom: 1.6rem;
+}
+
+.content-carousel.sactionals .slide .image {
+    padding-bottom: 1.6rem;
+}
+
+.content-carousel.sactionals .slide .content,
+.content-carousel.sactionals .slide .product-options {
+    padding: 0 1.6rem;
+    text-align: center;
+}
+
+.content-carousel.sactionals .slide :where(h2, h3, h4, h5, h6) {
+    font-size: 1.4rem;
+    font-weight: 600;
+    font-family: var(--body-font-family);
+    line-height: 2rem;
+    letter-spacing: normal;
+}
+
+.content-carousel.sactionals .slide .content :where(p, h2, h3, h4, h5, h6) {
+    margin: 0.4rem 0;
+    font-size: 1.4rem;
+    line-height: 2rem;
+}
+
+.content-carousel.sactionals .slide .content > :first-child {
+    margin-top: 0;
+}
+
+.content-carousel.sactionals .slide .content > :last-child {
+    margin-bottom: 0;
+}
+
+.content-carousel.sactionals .slide .image img,
+.content-carousel.sactionals .slide .image video {
+    aspect-ratio: 375 / 250;
+}
+
+.content-carousel.sactionals .slide:has(.button-container) {
+    padding-bottom: 80px;
+    position: relative;
+}
+
+.content-carousel.sactionals .slide .content .button-container {
+    position: absolute;
+    bottom: 16px;
+    width: calc(100% - 32px);
+}
+
+.content-carousel.sactionals .slide .product-options {
+    --gap: 7.8rem;
+
+    gap: var(--gap);
+    list-style: none;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    margin-top: 1.6rem;
+}
+
+.content-carousel.sactionals .slide .product-options img {
+    display: inline-block;
+    width: 77px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.content-carousel.sactionals .slide .product-options p {
+    font-size: 1.2rem;
+    line-height: 2rem;
+    margin: 0;
+}
+
+.content-carousel.sactionals .slide .product-options li {
+    flex: 0 1 92px;
+    margin: 0;
+    padding: 0;
+}
+
+.content-carousel.sactionals .slide .product-options li:not(:last-child) {
+    position: relative;
+}
+
+.content-carousel.sactionals .slide .product-options li:not(:last-child)::after {
+    content: '';
+    display: block;
+    width: 1.4rem;
+    height: 1.4rem;
+    background-color: var(--dark-color);
+    mask-image: url('../../icons/carousel-plus.svg');
+    position: absolute;
+    right: calc((-1.4rem - var(--gap)) / 2);
+    top: calc(50% - 0.7rem);
+}
+
+.content-carousel.sactionals .slide .product-options-3 {
+    --gap: 4.6rem;
+}
+
+.content-carousel.sactionals .indicators {
+    grid-row: 2;
+    grid-column: 1;
+}
+
+@media (width >= 600px) {
+    .content-carousel.sactionals {
+        width: 100%;
+        max-width: 970px;
+        margin: auto;
+    }
+
+    .content-carousel.sactionals .slide {
+        grid-template-columns: minmax(16px, 3fr) minmax(0, 350px) minmax(16px, 1fr) minmax(0, 350px) minmax(16px, 3fr);
+    }
+
+    .content-carousel.sactionals .slide:has(.button-container) {
+        padding-bottom: 1.6rem;
+    }
+
+    .content-carousel.sactionals .slide .image {
+        grid-row: 1;
+        grid-column: 1 / 6;
+    }
+
+    .content-carousel.sactionals .slide .image img,
+    .content-carousel.sactionals .slide .image video {
+        aspect-ratio: 970 / 403;
+        max-width: 970px;
+    }
+
+    .content-carousel.sactionals .controls {
+        display: grid;
+        grid-row: 1;
+        grid-column: 1;
+        grid-template-rows: max-content;
+        grid-template-columns: min-content auto min-content;
+        align-items: center;
+    }
+
+    .content-carousel.sactionals .controls button {
+        grid-row: 1;
+        grid-column: 1;
+        top: unset;
+        position: relative;
+    }
+
+    .content-carousel.sactionals .controls button:last-child {
+        grid-row: 1;
+        grid-column: 3;
+    }
+
+    .content-carousel.sactionals .controls::before {
+        /* 
+         * this pseudo element is used to give the controls grid a height relative to 
+         * the full width with the aspect ratio of the media (image/video).
+        */
+        grid-row: 1;
+        grid-column: 1 / 4;
+        display: block;
+        content: '';
+        height: 0;
+        padding-top: calc(100% / 970 * 403);
+    }
+
+    .content-carousel.sactionals .indicators {
+        display: none;
+    }
+
+    .content-carousel.sactionals .slide .content {
+        grid-column: 2;
+        text-align: left;
+        padding: 0;
+    }
+
+    .content-carousel.sactionals .slide .content :where(p, h2, h3, h4, h5, h6) {
+        font-size: 1.6rem;
+        line-height: 2.4rem;
+    }
+
+    .content-carousel.sactionals .slide .content .button-container {
+        position: unset;
+        width: auto;
+        display: block;
+    }
+
+    .content-carousel.sactionals .slide .content :first-child {
+        margin-top: 0;
+    }
+
+    .content-carousel.sactionals .slide .product-options {
+        grid-column: 4;
+        grid-row: 2 / 4;
+        padding: 0;
+        margin: 0;
+        align-self: center;
+    }
+}
+
+@media (width >= 768px) {
+    .content-carousel.sactionals .slide .content .price:has(+ .button-container) {
+        float: left;
+        margin: 1.3rem 2.4rem 1.3rem 0;
+    }
+
+    .content-carousel.sactionals .slide .content .price:has(+ .button-container):first-child {
+        /* add the .4rem to the top margin if there is no other content paragraph with a bottom margin */
+        margin-top: 1.65rem;
+    }
+}

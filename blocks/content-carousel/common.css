@@ -1,0 +1,214 @@
+/* stylelint-disable no-descending-specificity */
+
+.content-carousel {
+    --controls-button-size: 54px;
+
+    width: calc(100% + 2 * var(--section-padding-h));
+    margin: 0 calc(-1 * var(--section-padding-h));
+    display: grid;
+}
+
+.content-carousel .slides {
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    overflow: scroll clip;
+    scrollbar-width: none;
+    padding: 0;
+    margin: 0;
+}
+
+.content-carousel .slides::-webkit-scrollbar {
+    display: none;
+}
+
+.content-carousel .slide {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    display: grid;
+    margin-bottom: 0;
+}
+
+.content-carousel .slide:focus-visible {
+    outline: none;
+}
+
+.content-carousel .sbs-content :where(h2, h3, h4, h5, h6),
+.content-carousel .slide .titles :where(h2, h3, h4, h5, h6) {
+    font-family: var(--heading-font-family);
+    font-weight: 400;
+    font-size: 2.8rem;
+    line-height: 3.6rem;
+    letter-spacing: -0.056rem;
+}
+
+.content-carousel .sbs-content p,
+.content-carousel .slide .content {
+    font-family: var(--body-font-family);
+    font-size: 1.6rem;
+    line-height: 1.5;
+}
+
+.content-carousel .slide .image,
+.content-carousel .slide .titles,
+.content-carousel .slide .content {
+    grid-column: 1;
+}
+
+.content-carousel .slide .image p {
+    margin: 0;
+}
+
+.content-carousel .slide .image img,
+.content-carousel .slide .image video {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.content-carousel .slide .image video {
+    object-fit: contain;
+}
+
+.content-carousel .sbs-content > div > :first-child,
+.content-carousel .slide > div > :first-child {
+    margin-top: 0;
+}
+
+.content-carousel .sbs-content > div > :last-child,
+.content-carousel .slide > div > :last-child {
+    margin-bottom: 0;
+}
+
+.content-carousel .indicators {
+    grid-row: 2;
+    margin-top: 1.2rem;
+    z-index: 1;
+}
+
+.content-carousel .indicators ol {
+    display: flex;
+    justify-content: center;
+    gap: 1.4rem;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+}
+
+.content-carousel .indicators li {
+    box-sizing: border-box;
+    display: block;
+    width: 8px;
+    height: 8px;
+    margin: 0;
+    border-radius: 50%;
+    border: 1px solid var(--text-color);
+}
+
+.content-carousel .indicators li.active {
+    background-color: var(--text-color);
+}
+
+.content-carousel .indicators li.control {
+    display: none;
+}
+
+.content-carousel .indicators li span {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.content-carousel .indicators button {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+@media (width >= 600px) {
+    .content-carousel .controls button {
+        position: relative;
+        box-sizing: border-box;
+        width: var(--controls-button-size);
+        height: var(--controls-button-size);
+        border: 1px solid var(--dark-color);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        z-index: 1;
+    }
+
+    .content-carousel .controls button::after {
+        display: block;
+        content: '';
+        width: 27px;
+        height: 24px;
+        background-color: var(--dark-color);
+        mask-image: url('../../icons/carousel-arrow-left.svg');
+    }
+
+    .content-carousel .controls button:last-child::after {
+        width: 22px;
+        mask-image: url('../../icons/carousel-arrow-right.svg');
+    }
+
+    .content-carousel.ontop-controls {
+        position: relative;
+    }
+
+    .content-carousel.ontop-controls .controls button {
+        position: absolute;
+        top: calc(50% - var(--controls-button-size) / 2);
+        left: 40px;
+        background-color: var(--background-color);
+        border: 0;
+        box-shadow: 0 4px 9px 0 rgba(0 0 0 / 50%);
+    }
+
+    .content-carousel.ontop-controls .controls button:last-child {
+        left: auto;
+        right: 40px;
+    }
+
+    .content-carousel.ontop-controls .slides.first-slide ~ .controls button:first-child {
+        display: none;
+    }
+
+    .content-carousel.ontop-controls .slides.last-slide ~ .controls button:last-child {
+        display: none;
+    }
+}
+
+@media (width >= 900px) {
+    .content-carousel .indicators li.control {
+        display: block;
+        border: none;
+        border-radius: unset;
+        width: 12px;
+        height: 12px;
+        position: relative;
+        top: -2px;
+    }
+
+    .content-carousel .indicators li.control button {
+        background-color: var(--text-color);
+        mask-image: url('../../icons/carousel-arrow-left.svg');
+        mask-size: cover;
+    }
+
+    .content-carousel .indicators li.control button:focus-visible {
+        background-color: var(--link-color);
+    }
+
+    .content-carousel .indicators li.control.next button {
+        mask-image: url('../../icons/carousel-arrow-right.svg');
+    }
+}

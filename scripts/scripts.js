@@ -1,15 +1,15 @@
 import {
-  sampleRUM,
-  loadHeader,
-  loadFooter,
+  decorateBlocks,
   decorateButtons,
   decorateIcons,
   decorateSections,
-  decorateBlocks,
   decorateTemplateAndTheme,
-  waitForLCP,
   loadBlocks,
   loadCSS,
+  loadFooter,
+  loadHeader,
+  sampleRUM,
+  waitForLCP,
 } from './aem.js';
 
 const LCP_BLOCKS = []; // add your LCP blocks to the list
@@ -39,13 +39,9 @@ export function moveAttributes(from, to, attributes) {
  * @param {Element} to the element to copy attributes to
  */
 export function moveInstrumentation(from, to) {
-  moveAttributes(
-    from,
-    to,
-    [...from.attributes]
-      .map(({ nodeName }) => nodeName)
-      .filter((attr) => attr.startsWith('data-aue-') || attr.startsWith('data-richtext-')),
-  );
+  moveAttributes(from, to, [...from.attributes]
+    .map(({ nodeName }) => nodeName)
+    .filter((attr) => attr.startsWith('data-aue-') || attr.startsWith('data-richtext-')));
 }
 
 /**
@@ -143,6 +139,65 @@ function loadDelayed() {
   window.setTimeout(() => import('./delayed.js'), 3000);
   // load anything that can be postponed to the latest here
   import('./sidekick.js').then(({ initSidekick }) => initSidekick());
+}
+
+export function mergeImagesForArtDirection(img, imgMobile) {
+  const removeInstrumentation = (of) => {
+    const attributes = [...of.attributes].filter(({ nodeName }) => nodeName.startsWith('data-aue-') || nodeName.startsWith('data-richtext-'));
+    if (attributes.length) {
+      // eslint-disable-next-line no-restricted-syntax
+      for (const { nodeName } of attributes) of.removeAttribute(nodeName);
+      return attributes.reduce((prev, {
+        nodeName,
+        nodeValue,
+      }) => ({
+        ...prev,
+        [nodeName]: nodeValue,
+      }), {});
+    }
+    return null;
+  };
+
+  const applyDynamicInstrumentation = () => {
+    const dynamicInstrumentation = {};
+    // eslint-disable-next-line no-restricted-syntax
+    for (const entry of [[img, 'min-width: 600px'], [imgMobile]]) {
+      const [element, mediaQuery = ''] = entry;
+      const instrumentation = removeInstrumentation(element);
+      if (!instrumentation) {
+        return;
+      }
+      dynamicInstrumentation[mediaQuery] = instrumentation;
+    }
+    imgMobile.dataset.dynamicInstrumentation = JSON.stringify(dynamicInstrumentation);
+  };
+
+  if (imgMobile) {
+    const pictureMobile = imgMobile.parentElement;
+    // merge the imgMobile into the img:
+    // the sources have min-width media queries for desktop,
+    // we select the one without a media query which is for mobile
+    const pictureMobileMobileSource = pictureMobile.querySelector('source:not([media])');
+    if (pictureMobileMobileSource) {
+      const pcitureMobileSource = img.parentElement.querySelector('source:not([media])');
+      // eslint-disable-next-line max-len
+      if (pcitureMobileSource) pcitureMobileSource.replaceWith(pictureMobileMobileSource); else img.before(pictureMobileMobileSource);
+    } else {
+      // create a source if there are non (authoring specific case)
+      const source = document.createElement('source');
+      source.srcset = img.src;
+      source.media = '(min-width: 600px)';
+      img.before(source);
+    }
+    // the fallback image should also be the mobile one itself is also mobile so replace it
+    img.replaceWith(imgMobile);
+    // remove picture mobile
+    const p = pictureMobile.parentElement;
+    pictureMobile.remove();
+    if (p.children.length === 0 && !p.textContent.trim()) p.remove();
+    // the instrumentation depends on the viewport size, so we remove it
+    applyDynamicInstrumentation();
+  }
 }
 
 async function loadPage() {

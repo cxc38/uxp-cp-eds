@@ -1,0 +1,210 @@
+.content-carousel-wrapper:has(.content-carousel.info) {
+    max-width: unset;
+    margin: 0;
+}
+
+.content-carousel.info .sbs-content {
+    grid-row: 1;
+    grid-column: 1;
+    padding: 0 1.6rem;
+    text-align: center;
+    align-self: center;
+}
+
+.content-carousel.info .sbs-content.buttons {
+    grid-row: 4;
+    grid-column: 1;
+    padding: 0 1.6rem;
+    text-align: center;
+    align-self: center;
+    display: grid;
+    grid-auto-flow: row;
+    justify-content: center;
+    gap: 2.4rem;
+    margin: 0;
+}
+
+.content-carousel.info .sbs-content.buttons .button-container {
+    margin: 0;
+}
+
+.content-carousel.info .sbs-content.buttons .button-container :where(strong, em, a) {
+    display: block;
+}
+
+.content-carousel.info .sbs-content p:has(+ :where(h2, h3, h4, h5, h6)) {
+    /* pre title */
+    color: var(--c-color-blue-green-2);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 2.4rem;
+}
+
+.content-carousel.info .sbs-content :where(h2, h3, h4, h5, h6) {
+    /* title */
+    font-size: 2.4rem;
+    line-height: 3.2rem;
+    letter-spacing: -0.48px;
+    margin-top: 2.4rem;
+    margin-bottom: 0.8rem;
+}
+
+.content-carousel.info > .sbs-content > div > p {
+    margin-bottom: 2.4rem;
+}
+
+.content-carousel.info .slides {
+    gap: 16px;
+    padding: 0 var(--section-padding-h);
+    scroll-padding-left: var(--section-padding-h);
+}
+
+.content-carousel.info .slide {
+    flex: 0 0 calc(100% - var(--section-padding-h));
+    grid-template-rows: max-content max-content auto;
+    background-color: var(--light-color);
+    text-align: center;
+}
+
+.content-carousel.info .slide .image img,
+.content-carousel.info .slide .image video {
+    aspect-ratio: 331 / 188;
+}
+
+.content-carousel.info .slide .titles,
+.content-carousel.info .slide .content {
+    padding: 0 1.6rem;
+}
+
+.content-carousel.info .slide .titles {
+    padding-top: 0.8rem;
+}
+
+.content-carousel.info .slide .titles :where(p, h2, h3, h4, h5, h6) {
+    margin: 0.8rem 0;
+}
+
+.content-carousel.info .slide .titles :where(h2, h3, h4, h5, h6) {
+    font-size: 2rem;
+    line-height: 2.8rem;
+    letter-spacing: -0.4px;
+}
+
+.content-carousel.info .slide .titles img {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.content-carousel.info .slide .content ul,
+.content-carousel.info .slide .content ol {
+    text-align: left;
+    padding-left: 1.6rem;
+}
+
+.content-carousel.info .slide .content li {
+    margin: 0 0 1.6rem;
+    line-height: 2.4rem;
+}
+
+.content-carousel.info .slide .content > * {
+    margin: 0 0 0.8rem;
+    font-weight: 300;
+}
+
+.content-carousel.info .slide .content .button-container {
+    display: none;
+}
+
+.content-carousel.info .indicators {
+    grid-row: 3;
+    grid-column: 1;
+    margin: 2.4rem 0;
+}
+
+.content-carousel.info .controls {
+    display: none;
+}
+
+.bg-stealth .content-carousel.info .slide,
+.bg-dark .content-carousel.info .slide {
+    background-color: #fff;
+    color: var(--dark-color);
+}
+
+.bg-stealth .content-carousel.info .sbs-content p:has(+ :where(h2, h3, h4, h5, h6)),
+.bg-dark .content-carousel.info .sbs-content p:has(+ :where(h2, h3, h4, h5, h6)) {
+    color: var(--light-color);
+}
+
+/* stealth style */
+.content-carousel.info.info-stealth .slide {
+    color: #fff;
+    background-color: var(--dark-color);
+}
+
+@media (width >= 600px) {
+    .content-carousel.info .slide {
+        flex: 0 0 411px;
+    }
+}
+
+/*
+ * 900px is not ideal as the cards will be not even 50% of the width,
+ * hence another breakpoint to add 50px starting at 950
+ */
+@media (width >= 900px) {
+    .content-carousel.info {
+        column-gap: 24px;
+        grid-template-columns: 441px auto;
+        grid-template-rows: 1fr min-content min-content min-content 1fr;
+    }
+
+    .content-carousel.info .sbs-content {
+        grid-row: 2;
+        grid-column: 1;
+        padding: 0 40px;
+    }
+
+    .content-carousel.info .sbs-content.buttons {
+        grid-row: 3;
+        grid-column: 1;
+        padding: 0 40px;
+    }
+
+    .content-carousel.info .sbs-content p:has(+ :where(h2, h3, h4, h5, h6)) {
+        /* pre title */
+        color: var(--dark-color);
+        margin-bottom: 2.4rem;
+    }
+
+    .content-carousel.info .sbs-content :where(h2, h3, h4, h5, h6) {
+        margin-bottom: 1.6rem;
+    }
+
+    .content-carousel.info .sbs-content :where(h2, h3, h4, h5, h6) + p {
+        line-height: 2.8rem;
+    }
+
+    .content-carousel.info .indicators,
+    .content-carousel.info .controls {
+        grid-row: 4;
+        grid-column: 1;
+    }
+
+    .content-carousel.info .slides {
+        grid-row: 1 / 6;
+        grid-column: 2;
+        gap: 24px;
+        padding: 0 40px 0 0;
+        scroll-padding-left: 0;
+    }
+}
+
+@media (width >= 950px) {
+    .content-carousel.info {
+        grid-template-columns: 491px auto;
+    }
+}

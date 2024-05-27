@@ -1,0 +1,86 @@
+.content-carousel-wrapper:has(.content-carousel.fullwidth) {
+    max-width: unset;
+}
+
+.content-carousel.fullwidth .slides {
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.content-carousel.fullwidth .slide {
+    grid-template-rows: auto min-content min-content 0;
+    color: var(--background-color);
+}
+
+.content-carousel.fullwidth .slide .image {
+    grid-row: 1 / 5;
+}
+
+.content-carousel.fullwidth .slide .image img,
+.content-carousel.fullwidth .slide .image video {
+    aspect-ratio: 375 / 468;
+    object-fit: cover;
+}
+
+.content-carousel.fullwidth .slide .titles {
+    grid-row: 2;
+    text-align: left;
+    padding: 1.6rem 1.6rem 0;
+}
+
+.content-carousel.fullwidth .slide .titles p:has(+ :where(h2, h3, h4, h5, h6)) {
+    /* pre title */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 2rem;
+    font-weight: 700;
+}
+
+.content-carousel.fullwidth .slide .titles :where(p, h2, h3, h4, h5, h6) {
+    margin: 0.4rem 0;
+}
+
+.content-carousel.fullwidth .slide .content {
+    grid-row: 3;
+    text-align: left;
+    padding: 0 1.6rem 1.6rem;
+}
+
+.content-carousel.fullwidth .indicators {
+    grid-row: 2;
+    grid-column: 1;
+}
+
+@media (width >=600px) {
+    .content-carousel.fullwidth .slide {
+        grid-template-rows: auto min-content min-content auto;
+    }
+
+    .content-carousel.fullwidth .slide .titles p {
+        margin: 1rem 0;
+        line-height: 2.8rem;
+    }
+
+    .content-carousel.fullwidth .slide .titles p:has(+ :where(h2, h3, h4, h5, h6)) {
+        /* pre title */
+        line-height: 2.4rem;
+    }
+
+    .content-carousel.fullwidth .slide .titles :where(h2, h3, h4, h5, h6) {
+        line-height: 4rem;
+        letter-spacing: -0.72px;
+        margin: 1rem 0;
+    }
+
+    .content-carousel.fullwidth .slide .image img,
+    .content-carousel.fullwidth .slide .image video {
+        aspect-ratio: 1440 / 640;
+        max-height: 640px;
+    }
+
+    .content-carousel.fullwidth .slide .titles,
+    .content-carousel.fullwidth .slide .content {
+        padding: 0 0 0 17.4rem;
+        max-width: 335px;
+    }
+}
