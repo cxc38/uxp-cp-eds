@@ -1,5 +1,5 @@
 mountpoints:
   /:
-    url: "https://author-p135559-e1349184.adobeaemcloud.com//bin/franklin.delivery/cxc38/uxp-cp-eds/main"
+    url: "https://author-p135559-e1349184.adobeaemcloud.com/bin/franklin.delivery/cxc38/uxp-cp-eds/main"
     type: "markup"
-    suffix: ".html"
+    suffix: ".html?wcmmode=disabled"
