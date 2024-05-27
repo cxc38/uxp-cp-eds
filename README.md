@@ -2,8 +2,8 @@
 Your project's description...
 
 ## Environments
-- Preview: https://main--{repo}--{owner}.hlx.page/
-- Live: https://main--{repo}--{owner}.hlx.live/
+- Preview: https://main--uxp-cp-eds--cxc38.hlx.page/
+- Live: https://main--uxp-cp-eds--cxc38.hlx.live/
 
 ## Installation
 
