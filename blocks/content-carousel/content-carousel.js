@@ -1,5 +1,4 @@
 import { mergeImagesForArtDirection, moveInstrumentation } from '../../scripts/scripts.js';
-import './common.css';
 
 let carouselCount = 1;
 
