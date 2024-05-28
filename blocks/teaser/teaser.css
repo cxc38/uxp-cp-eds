@@ -1,0 +1,278 @@
+/* ----- MOBILE / Default ----- */
+
+/* teaser wrapper stretches over complete width */
+.section div.teaser-wrapper {
+    max-width: unset;
+
+    /* stretches to window edge in mobile view */
+    margin-left: calc(-1 * 16px);
+    margin-right: calc(-1 * 16px);
+}
+
+.teaser.block {
+    width: 100%;
+    height: 100%;
+}
+
+/* the foreground contains text and spacer */
+.teaser.block > .foreground {
+    margin: auto;
+}
+
+/* the text block (title , descr , ctr) */
+.teaser.block > .foreground > .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+}
+
+/* the main title, hidden in mobile */
+.teaser.block > .foreground > .text > .title {
+    display: none;
+    font-family: var(--body-font-family);
+    font-size: var(--heading-font-size-l);
+    font-weight: 700;
+}
+
+.teaser.block.dark > .foreground > .text > .title {
+    color: var(--background-color);
+}
+
+/* long description , hidden in mobile */
+.teaser.block > .foreground > .text > .long-description {
+    display: none;
+}
+
+.teaser.block > .foreground > .text > .long-description,
+.teaser.block > .foreground > .text > .long-description * {
+    font-family: var(--body-font-family);
+    margin: 0;
+}
+
+.teaser.block.dark > .foreground > .text > .long-description,
+.teaser.block.dark > .foreground > .text > .long-description * {
+    color: var(--background-color);
+}
+
+/* the list of CTA's */
+.teaser.block > .foreground > .text > .cta {
+    display: flex;
+    padding: 0;
+    width: min-content;
+    margin: 0 auto;
+}
+
+.teaser.block > .foreground > .text > .cta:empty {
+    display: none;
+}
+
+/* the cta buttons in mobile view */
+.teaser.block > .foreground > .text > .cta > a.button {
+    background-color: var(--background-color);
+    border: 2px solid transparent;
+    margin: 0;
+    font-family: var(--body-font-family);
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 15px;
+    padding: 5px 14px 6px;
+}
+
+/* spacer div */
+.teaser.block > .foreground > .spacer {
+    display: none;
+}
+
+/* The background color for mobile view */
+.teaser.block > .foreground,
+.teaser.block.dark > .foreground {
+    background-color: var(--background-color);
+}
+
+/* the background image , hidden in mobile */
+.teaser.block > .background img {
+    display: none;
+    width: auto;
+    height: max-content;
+    object-fit: cover;
+}
+
+/* ----- TABLET ----- */
+@media (width >= 600px) {
+    .section.teaser-container {
+        padding: 0 56px;
+    }
+
+    .section div.teaser-wrapper {
+        /* stretches to window edge, cover section padding */
+        margin-left: calc(-1 * 56px);
+        margin-right: calc(-1 * 56px);
+    }
+
+    /* remove background color , add border */
+    .teaser.block,
+    .teaser.block.dark {
+        position: relative;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    /* foreground container, flex (text + spacer), always on top */
+    .teaser.block > .foreground {
+        position: relative;
+        display: flex;
+        padding: 0 56px;
+        background-color: unset;
+        min-height: 420px;
+    }
+
+    .teaser.block.dark > .foreground {
+        background-color: unset;
+    }
+
+    /* limit width of text part and set order */
+    .teaser.block > .foreground > .text {
+        width: 65%;
+        order: 0;
+        padding: 32px 0;
+    }
+
+    /* change the order if text should be on the right */
+    .teaser.block.right > .foreground > .text {
+        order: 1;
+    }
+
+    /* turn on the title */
+    .teaser.block > .foreground > .text > .title {
+        display: block;
+    }
+
+    .teaser.block > .foreground > .text > .title :where(h1, h2, h3, h4, h5, h6) {
+        margin: 0;
+        color: inherit;
+        font: inherit;
+    }
+
+    /* turn on long description */
+    .teaser.block > .foreground > .text > .long-description {
+        /* display: block; */
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* revert to normal button behavior for primary and secondary */
+    .teaser.block > .foreground > .text > .cta > a.button {
+        background-color: var(--link-color);
+        border: 2px solid transparent;
+        color: var(--background-color);
+    }
+
+    .teaser.block.dark > .foreground > .text > .cta > a.button {
+        background-color: var(--background-color);
+        border: 2px solid transparent;
+        color: currentcolor;
+    }
+
+    /* spacer */
+    .teaser.block > .foreground > .spacer {
+        display: block;
+        order: 1;
+        width: 35%;
+    }
+
+    /* change the order if text should be on the right */
+    .teaser.block.right > .foreground > .spacer {
+        order: 0;
+    }
+
+    /* the background image container */
+    .teaser.block > .background {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+
+    /* reomve background color to avoid flicker on load */
+    .teaser.block > .background,
+    .teaser.block.dark > .background {
+        background-color: unset;
+    }
+
+    /* the image */
+    .teaser.block > .background img {
+        display: block;
+        height: 100%;
+        width: 100%;
+        object-position: right;
+    }
+
+    /* it gets a border */
+    body[class^='browse-'] .section div.teaser-wrapper .background img {
+        border-radius: 4px;
+    }
+
+    body[class^='browse-'] .section div.teaser-wrapper .foreground {
+        border: 1px solid #e6e6e6;
+        border-radius: 4px;
+        min-height: 240px;
+        padding: 0 80px;
+    }
+
+    /* the main title, hidden in mobile */
+    body[class^='browse-'] .teaser.block > .foreground > .text > .title {
+        font-size: 25px;
+        line-height: 37.5px;
+    }
+
+    body[class^='browse-'] .teaser.block > .foreground > .text > .long-description,
+    body[class^='browse-'] .teaser.block > .foreground > .text > .long-description * {
+        font-size: var(--body-font-size-s);
+        line-height: 18.2px;
+    }
+
+    body[class^='browse-'] .teaser.block > .foreground > .text > .cta > a.button {
+        font-size: 13px;
+        line-height: 16px;
+        padding: 4px 14px 6px;
+    }
+
+    body[class^='browse-'] .teaser.block > .foreground > .text {
+        width: 55%;
+    }
+}
+
+/* when shown on a page with a rail */
+@media (width >= 1024px) {
+    /* no longer goes from end to end */
+    body[class^='browse-'] .section div.teaser-wrapper {
+        margin-left: unset;
+        margin-right: unset;
+    }
+
+    body[class^='browse-'] .section div.teaser-wrapper .foreground {
+        padding: 0 40px;
+    }
+
+    body[class^='browse-'] .teaser.block > .foreground > .text {
+        width: 65%;
+    }
+}
+
+@media (width >= 1200px) {
+    body[class^='browse-'] .section div.teaser-wrapper .foreground {
+        padding: 0 40px;
+    }
+
+    /* the main title, hidden in mobile */
+    body:not([class^='browse-']) .teaser.block > .foreground > .text > .title {
+        font-size: var(--heading-font-size-xl);
+        line-height: 46.8px;
+    }
+}

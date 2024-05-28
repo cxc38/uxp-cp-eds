@@ -15,7 +15,8 @@
       "text",
       "image",
       "button",
-      "title"
+      "title",
+      "content-carousel"
     ]
   },
   {
@@ -28,7 +29,8 @@
       "hero",
       "cards",
       "columns",
-      "content-carousel"
+      "content-carousel",
+      "teaser"
     ]
   },
   {
@@ -36,6 +38,10 @@
     "components": [
       "card"
     ]
+  },
+  {
+    "id": "teaser",
+    "components": ["teaser"]
   },
   {
     "id": "content-carousel",
