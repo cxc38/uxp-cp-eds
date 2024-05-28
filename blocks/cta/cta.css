@@ -1,0 +1,10 @@
+/* buttons-inline variant */
+.cta.buttons .button-container {
+    margin: 0;
+}
+
+.cta .icon {
+    width: 60px;
+    height: auto;
+    vertical-align: -webkit-baseline-middle;
+}

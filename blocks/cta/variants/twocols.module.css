@@ -1,0 +1,30 @@
+.block {
+    .content {
+        width: 80%;
+        margin: 25px auto;
+        display: grid !important;
+        grid-template-columns: 100%;
+        text-align: center;
+
+        @media (width >= 900px) {
+            margin: 0 auto;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            text-align: left;
+        }
+
+        :is(h2, h3, h4) {
+            @media (width >= 900px) {
+                width: 60%;
+            }
+        }
+
+        div:first-of-type {
+            grid-row: span 2;
+        }
+    }
+
+    .cta {
+        order: 1;
+    }
+}

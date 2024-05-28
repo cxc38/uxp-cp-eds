@@ -1,0 +1,50 @@
+.block {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    @media (width >= 767px) {
+        flex-direction: row;
+    }
+
+    .content {
+        flex: 1.5;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 5%;
+        order: 2;
+
+        @media (width >= 767px) {
+            order: 1;
+        }
+    }
+
+    .media {
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        order: 1;
+
+        picture {
+            height: 100%;
+        }
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        iframe,
+        video {
+            aspect-ratio: 16/9;
+            border: none;
+        }
+
+        @media (width >= 767px) {
+            order: 2;
+        }
+    }
+}

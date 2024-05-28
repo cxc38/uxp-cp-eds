@@ -1,0 +1,47 @@
+.block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 90%;
+    margin: auto;
+
+    h3 {
+        font-size: 3.2rem;
+        font-weight: 300;
+        margin-bottom: 1.5rem;
+    }
+
+    p {
+        font-size: 2rem;
+        font-weight: 300;
+        margin: 0 auto 3rem;
+
+        @media (width >= 767px) {
+            max-width: 60%;
+        }
+    }
+
+    a {
+        min-width: 100%;
+
+        @media (width >= 767px) {
+            min-width: 240px;
+        }
+    }
+
+    > div {
+        width: 100%;
+    }
+
+    & div > div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
+
+        @media (width >= 767px) {
+            flex-direction: row;
+        }
+    }
+}

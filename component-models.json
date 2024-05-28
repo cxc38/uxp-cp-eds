@@ -232,6 +232,292 @@
     ]
   },
   {
+    "id": "cta",
+    "fields": [
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "classes",
+        "value": "",
+        "label": "Variant",
+        "options": [
+          {
+            "name": "Lines",
+            "value": "lines"
+          },
+          {
+            "name": "Background Image",
+            "value": "bgimage"
+          },
+          {
+            "name": "Background Image - Low Text Centered",
+            "value": "bgimglowtext"
+          },
+          {
+            "name": "Background Image - Low Text Left",
+            "value": "bgimglowleft"
+          },
+          {
+            "name": "Background Image - Hight Text Centered",
+            "value": "bgimghightext"
+          },
+          {
+            "name": "CTA + Media ",
+            "value": "mediaright"
+          },
+          {
+            "name": "CTA + Media - Swap Mobile",
+            "value": "mediarightswap"
+          },
+          {
+            "name": "Media + CTA",
+            "value": "medialeft"
+          },
+          {
+            "name": "Media + CTA - Swap Mobile",
+            "value": "medialeftswap"
+          },
+          {
+            "name": "Icon (Left) + CTA (Right)",
+            "value": "iconleft"
+          },
+          {
+            "name": "2 Buttons (Inline)",
+            "value": "buttons"
+          },
+          {
+            "name": "Stealth Two Column",
+            "value": "twocols"
+          },
+          {
+            "name": "Heroes Banner",
+            "value": "heroesbanner"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "content_title",
+        "value": "",
+        "label": "Title"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "content_titleType",
+        "value": "",
+        "label": "Title Type",
+        "options": [
+          {
+            "name": "h2",
+            "value": "h2"
+          },
+          {
+            "name": "h3",
+            "value": "h3"
+          },
+          {
+            "name": "h4",
+            "value": "h4"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "content_subtitle",
+        "value": "",
+        "label": "Subtitle"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "content_subtitleType",
+        "value": "",
+        "label": "Subtitle Type",
+        "options": [
+          {
+            "name": "h3",
+            "value": "h3"
+          },
+          {
+            "name": "h4",
+            "value": "h4"
+          },
+          {
+            "name": "h5",
+            "value": "h5"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "content_text",
+        "value": "",
+        "label": "Text"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "cta_cta1",
+        "value": "",
+        "label": "CTA1 URL"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "cta_cta1Title",
+        "value": "",
+        "label": "CTA1 Title"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "cta_cta1Text",
+        "value": "",
+        "label": "CTA1 Text"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "cta_cta1Type",
+        "value": "",
+        "label": "CTA1 Type",
+        "options": [
+          {
+            "name": "default",
+            "value": ""
+          },
+          {
+            "name": "primary",
+            "value": "primary"
+          },
+          {
+            "name": "secondary",
+            "value": "secondary"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "cta_cta2",
+        "value": "",
+        "label": "CTA2 URL"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "cta_cta2Title",
+        "value": "",
+        "label": "CTA2 Title"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "cta_cta2Text",
+        "value": "",
+        "label": "CTA2 Text"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "cta_cta2Type",
+        "value": "",
+        "label": "CTA2 Type",
+        "options": [
+          {
+            "name": "default",
+            "value": ""
+          },
+          {
+            "name": "primary",
+            "value": "primary"
+          },
+          {
+            "name": "secondary",
+            "value": "secondary"
+          }
+        ]
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media_image",
+        "value": "",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_imageAlt",
+        "value": "",
+        "label": "Image Alt"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media_imageMobile",
+        "value": "",
+        "label": "Image (Mobile)",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_video",
+        "value": "",
+        "label": "Video URL"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_videoText",
+        "value": "",
+        "label": "Video Title"
+      },
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "media_videoTitle",
+        "value": "",
+        "label": "Video Options",
+        "options": [
+          {
+            "name": "Muted",
+            "value": "muted"
+          },
+          {
+            "name": "Loop",
+            "value": "loop"
+          },
+          {
+            "name": "Inline",
+            "value": "playsinline"
+          },
+          {
+            "name": "Autoplay",
+            "value": "autoplay"
+          },
+          {
+            "name": "Controls",
+            "value": "controls"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_videoMobile",
+        "value": "",
+        "label": "Video (Mobile) URL"
+      }
+    ]
+  },
+  {
     "id": "content-carousel",
     "fields": [
       {
