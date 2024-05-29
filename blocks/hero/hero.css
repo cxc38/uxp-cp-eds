@@ -1,3 +1,13 @@
+.default-content-wrapper h1 {
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.default-content-wrapper p {
+  font-size: 1rem;
+  text-align: center;
+}
+
 main .hero-container > div {
   max-width: unset;
 }
@@ -12,11 +22,14 @@ main .hero-container {
   min-height: 300px;
 }
 
+
 .hero h1 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
+  position: absolute;
+  width: 100%;
+  top: 40%;
   color: white;
+  font-size: 2rem;
+  text-align: center;
 }
 
 .hero picture {

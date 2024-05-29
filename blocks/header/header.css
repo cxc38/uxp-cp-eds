@@ -4,6 +4,7 @@ header .nav-wrapper {
   width: 100%;
   z-index: 2;
   position: fixed;
+  padding: 1rem;
 }
 
 header nav {
@@ -19,6 +20,7 @@ header nav {
   height: var(--nav-height);
   padding: 0 1rem;
   font-family: var(--body-font-family);
+  padding-top: 20px;
 }
 
 header nav[aria-expanded='true'] {
@@ -139,7 +141,7 @@ header nav[aria-expanded='true'] .nav-hamburger-icon::after {
 }
 
 /* brand */
-header .nav-brand {
+header nav .nav-brand {
   grid-area: brand;
   flex-basis: 128px;
   font-size: var(--heading-font-size-s);
@@ -148,7 +150,7 @@ header .nav-brand {
 }
 
 header nav .nav-brand img {
-  width: 128px;
+  width: 100px;
   height: auto;
 }
 
