@@ -24,7 +24,6 @@ function calcSlideIntersection(slidesContainer, slides = [...slidesContainer.chi
       offsetWidth,
     } = slide;
     const offsetRight = offsetLeft + offsetWidth;
-    // intersects?
     // eslint-disable-next-line max-len
     const intersectionRatio = calcIntersectionRatio(scrollLeft, scrollRight, offsetLeft, offsetRight);
     return {
@@ -60,10 +59,7 @@ function onceIntersecting(element, callback) {
 function updateIndicatorState(slidesContainer, indicators) {
   let scrollDone;
   const calculateActiveIndicator = (setFocus) => {
-    const activeIndicators = calcSlideIntersection(slidesContainer, [...indicators
-      .querySelectorAll('[data-target-slide]')]
-      .map((indicator) => slidesContainer
-        .querySelector(`#${indicator.dataset.targetSlide}`)))
+    const activeIndicators = calcSlideIntersection(slidesContainer, [...indicators.querySelectorAll('[data-target-slide]')].map((indicator) => slidesContainer.querySelector(`#${indicator.dataset.targetSlide}`)))
       .filter(({ intersectionRatio }) => intersectionRatio > 0)
       .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
     const [activeIndicator] = activeIndicators;
@@ -76,21 +72,21 @@ function updateIndicatorState(slidesContainer, indicators) {
       .add('active');
 
     if (scrollDone) clearTimeout(scrollDone);
-    // eslint-disable-next-line max-len
-    scrollDone = setTimeout(() => updateSlideState(slidesContainer, activeIndicator.slide, setFocus), 30);
+    scrollDone = setTimeout(() => {
+      updateSlideState(slidesContainer, activeIndicator.slide, setFocus);
+    }, 30);
   };
 
-  slidesContainer
-    .addEventListener('scroll', () => calculateActiveIndicator(true), { passive: true });
+  slidesContainer.addEventListener('scroll', () => calculateActiveIndicator(true), { passive: true });
 
   onceIntersecting(indicators, () => calculateActiveIndicator(false));
 }
 
 /**
- * Calculate the number of visible indicators based on the number of slides
- * visible in the slides container.
- * Then create a indicator list with it, intentionally skipping some slides
- * to always scroll the full visible list.
+ * Calculate the number of visible indicators based on the number of
+ * slides visible in the slides container.
+ * Then create a indicator list with it, intentionally skipping
+ * some slides to always scroll the full visible list.
  *
  * This is used for the .info and .info-stealth carousel.
  *
@@ -163,29 +159,30 @@ function gotoSlide(slidesContainer, id) {
 
 /**
  * @param {HTMLDivElement} block
- */
+ * */
 export default async function decorate(block) {
+  block.classList.add('sbs', 'ontop-controls');
   const additionalStyles$ = Promise.resolve();
-  // simplify some classnames and load additional stylesheets
-  if (block.matches('.sbs,.sbs-right')) {
-    block.classList.add('sbs', 'ontop-controls');
-    // additionalStyles$ = import('./sbs.css');
-  } else if (block.matches('.info,.info-stealth')) {
-    block.classList.add('info');
-    // additionalStyles$ = import('./info.css');
-  } else if (block.matches('.sactionals')) {
-    block.classList.add('ontop-controls');
-    // additionalStyles$ = import('./sactionals.css');
-  } else if (block.matches('.fullwidth')) {
-    block.classList.add('ontop-controls');
-    // additionalStyles$ = import('./fullwidth.css');
-  } else {
-    block.classList.add('media');
-    // additionalStyles$ = import('./media.css');
-  }
-
-  const carouselId = `carousel-${carouselCount}`;
-  carouselCount += 1;
+  /**
+   // simplify some classnames and load additional stylesheets
+   if (block.matches('.sbs,.sbs-right')) {
+   block.classList.add('sbs', 'ontop-controls');
+   additionalStyles$ = import('./sbs.css');
+   } else if (block.matches('.info,.info-stealth')) {
+   block.classList.add('info');
+   additionalStyles$ = import('./info.css');
+   } else if (block.matches('.sactionals')) {
+   block.classList.add('ontop-controls');
+   additionalStyles$ = import('./sactionals.css');
+   } else if (block.matches('.fullwidth')) {
+   block.classList.add('ontop-controls');
+   additionalStyles$ = import('./fullwidth.css');
+   } else {
+   block.classList.add('media');
+   additionalStyles$ = import('./media.css');
+   }* */
+  // eslint-disable-next-line no-plusplus
+  const carouselId = `carousel-${carouselCount++}`;
   const [firstRow, ...slides] = block.children;
 
   const slidesContainer = document.createElement('ol');

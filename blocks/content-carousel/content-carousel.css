@@ -1,11 +1,15 @@
 /* stylelint-disable no-descending-specificity */
-
+.content-carousel-wrapper {
+    width: 100%;
+}
 .content-carousel {
     --controls-button-size: 54px;
 
     width: calc(100% + 2 * var(--section-padding-h));
     margin: 0 calc(-1 * var(--section-padding-h));
     display: grid;
+    border: var(--debug-border);
+
 }
 
 .content-carousel .slides {
@@ -18,6 +22,7 @@
     scrollbar-width: none;
     padding: 0;
     margin: 0;
+
 }
 
 .content-carousel .slides::-webkit-scrollbar {

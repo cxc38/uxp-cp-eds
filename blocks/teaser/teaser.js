@@ -1,5 +1,3 @@
-import './teaser.css';
-
 function decorateButtons(...buttons) {
   return buttons
     .map((div) => {
@@ -17,6 +15,7 @@ function decorateButtons(...buttons) {
 export function generateTeaserDOM(props) {
   // Extract properties, always same order as in model, empty string if not set
   const [pictureContainer, title, longDescr, firstCta] = props;
+  console.log(title.innerHtml);
   const picture = pictureContainer.querySelector('picture');
 
   // Build DOM

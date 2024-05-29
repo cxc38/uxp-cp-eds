@@ -1,0 +1,9 @@
+.section {
+    --debug-border: 1px solid red;
+    --section-padding-v: 16px;
+    --section-padding-h: 16px;
+    --section-padding: var(--section-padding-v) var(--section-padding-h);
+    --section-bg-color: transparent;
+    --section-text-align: left;
+    --section-heading-color: inherit;
+}
